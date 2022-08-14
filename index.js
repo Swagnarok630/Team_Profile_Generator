@@ -5,8 +5,10 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+// Starting with empty array to add employees to
 const employees = [];
 
+// Initial prompt for program. Add an employee, create a page, or exit out of program
 function start() {
     inquirer.prompt({
         type: "list",
@@ -26,6 +28,7 @@ function start() {
     })
 }
 
+// Question to prompt for which type of employee to add or to go back to first prompt
 function createEmployee() {
     inquirer.prompt({
         type: "list",
@@ -47,6 +50,7 @@ function createEmployee() {
     })
 }
 
+// Create a manager function
 function createManager() {
     inquirer.prompt([
         {
@@ -82,6 +86,7 @@ function createManager() {
 });
 }
 
+// Create an Engineer function
 function createEngineer() {
     inquirer.prompt([
         {
@@ -117,6 +122,7 @@ function createEngineer() {
     })
 }
 
+// Create an Intern function
 function createIntern() {
     inquirer.prompt([
         {
@@ -152,6 +158,7 @@ function createIntern() {
     })
 }
 
+// Function to render gathered data (array of employees) into HTML file and write the file
 function createHtml() {
     const html = `
     <!doctype html>
