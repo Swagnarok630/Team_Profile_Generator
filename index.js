@@ -5,12 +5,6 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-
-
-// function init() {
-//     createManager();
-// }
-
 const employees = [];
 
 function start() {
@@ -88,33 +82,6 @@ function createManager() {
 });
 }
 
-// function addMoreEmployees() {
-//     inquirer.prompt([
-//         {
-//             type: "list",
-//             name: "whatNext",
-//             message: "Would you like to add a new employee?",
-//             choice: [
-//                 "New Engineer",
-//                 "New Intern",
-//                 "Exit"
-//             ]
-//         }
-//     ]).then((answer) => {
-//         switch(answer.whatNext) {
-//             case "New Engineer":
-//                 createEngineer();
-//                 break;
-//             case "New Intern":
-//                 createIntern();
-//                 break;
-//             default:
-//                 exit();
-//                 break;
-//         }
-//     })
-// }
-
 function createEngineer() {
     inquirer.prompt([
         {
@@ -185,38 +152,29 @@ function createIntern() {
     })
 }
 
+function createHtml() {
+    const html = `
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap demo</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+      </head>
+      <body>
+        <div class="p-4">
+        <h1 class="text-center mb-5">THE DREAM TEAM!!!</h1>
+        <div class="d-flex justify-content-evenly">
+            ${employees.map(employee => employee.createCard()).join("\n")}
+        </div>
+        </div>
+    </body>
+    </html>
+    `
+    fs.writeFileSync("./dist/index.html", html)
 
-// function createCard(employee) {
-//     return `
-//         <div class="card">
-//             <h3>${employee.name}</h3>
-//             <h4>${employee.role}</h4>
-
-//             <p>${employee.id}</p>
-//             <p>${employee.email}</p>
-//             <p>${employee.managerOffice || employee.engineerGithub || employee.internSchool}</p>
-
-//         </div>
-//     `
-// }
-
-// function createHtml() {
-//     return `
-//     <!DOCTYPE html>
-//     <html lang="en">
-//     <head>
-//         <meta charset="UTF-8">
-//         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//         <title>Document</title>
-//     </head>
-//     <body>
-//         ${employeeArray.map(createCard)}
-//     </body>
-//     </html>
-//     `
-// }
-
-// fs.writeFileSync("/dist/index.html", createHtml())
+    console.log("Team Page Created!")
+}
 
 start();
