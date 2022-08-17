@@ -5,7 +5,7 @@
 ## Description
 
 A Node JS application that will create an HTML file consisting of the user's team members they have entered into the app.  
-App can be found deployed [here](https://github.com/Swagnarok630/Team_Profile_Generator).
+App repository can be found [here](https://github.com/Swagnarok630/Team_Profile_Generator).
 
 ## Table of Contents
 
